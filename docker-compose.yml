@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'sadeeque'
+      MONGO_INITDB_ROOT_PASSWORD: 'secret'
+      MONGO_INITDB_DATABASE: 'narrdb'
+    networks:
+      - narrnet
+    volumes:
+      - ../storage:/data/db
+
+#   redisDB:
+#     image: redis
+#     ports:
+#       - 6378:6379
+#     networks:
+#       - narrnet
+
+  # narrui:
+  #   build: .
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
+  #   networks:
+  #     - narrnet
+  # depends_on:
+  #   - mongo
+  #   - api
+
+#   api:
+#     build: .
+#     #image: 'sadeeque/contact-api:1.0'
+#     restart: always
+#     environment:
+#       MONGOUSER: 'sadeeque'
+#       MONGOPASS: 'secret'
+#       MONGODB: 'keks'
+#       MONGOHOST: 'mongo'
+#     ports:
+#       - 3000:3000
+#     networks:
+#       - narrnet
+#     depends_on:
+#       - mongo
+
+networks:
+  narrnet:
+    driver: bridge
