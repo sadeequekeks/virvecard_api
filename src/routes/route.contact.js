@@ -66,7 +66,7 @@ module.exports = () => {
                 res.status(500).json({ status: 'failed', payload: null, message: err });
             }
         } else {
-            res.status(500).json({ status: 'failure', payload: null, message: 'Invalid Contact id to Update' });
+            res.status(500).json({ status: 'failure', payload: null, message: 'Invalid Contact id to Update' }); 
         }
     });
 
